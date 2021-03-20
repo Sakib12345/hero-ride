@@ -1,0 +1,72 @@
+.header{
+    height: 0px;
+}
+.header .logo{
+    height: 120px;
+}
+.title-container{
+    color: rgba(255, 255, 255, 0.699);
+    text-align: center;
+    font-size: 2em;
+}
+.ul{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav li{
+    display: inline;
+    margin-left: 50px;
+}
+  
+  .nav a{
+    text-decoration: none;
+    color: rgba(51, 51, 51, 0.877);
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 80px;
+  }
+.login-btn{
+    width: 120px;
+    height: 50px;
+    color: rgba(255, 255, 255, 0.877);
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(255, 102, 0);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+    .header{
+        height: auto;
+    }
+    .header .logo{
+        height: 50px;
+    }
+    .ul{
+        flex-direction: column;
+    }
+    .nav li{
+        display: inline;
+        margin-left: 0px;
+    }
+    .nav a{
+        text-decoration: none;
+        color: rgba(51, 51, 51, 0.877);
+        font-weight: bold;
+        font-size: 15px;
+        margin-left: 0px;
+      }
+      .login-btn{
+        width: 90px;
+        height: 30px;
+        color: rgba(255, 255, 255, 0.877);
+        font-size: 15px;
+        border: none;
+        border-radius: 10px;
+        background-color: rgb(255, 102, 0);
+        cursor: pointer;
+    }
+  }

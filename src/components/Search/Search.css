@@ -1,0 +1,182 @@
+body{ overflow: hidden; }
+
+.searchLocationResult h1{
+    font-weight: 700;
+    font-size:30px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(143, 1, 1);
+}
+
+.searchLocation {
+    box-shadow: 3px 3px 10px lightgrey;
+    width: 20%;
+    height: 600px;
+    margin-top: 10%;
+    background-color:rgb(226, 226, 226);
+}
+.map{
+    box-shadow: 3px 3px 10px lightgrey;
+    width: 60%;
+    height: 600px;
+    margin-top: 10%;
+}
+.search-container{
+    display:flex;
+    justify-content: space-evenly;
+}
+.form__group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 50%;
+  }
+.form__field {
+    font-family: inherit;
+    width: 150%;
+    border: 0;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    outline: 0;
+    font-size: 1rem;
+    color: rgb(48, 48, 48);
+    padding: 10px 5px;
+    margin-top: 5px;
+    margin-left: 40px;
+    transition: border-color 0.2s;
+  }
+.form__label {
+    margin-top: 20px;
+    margin-left: 40px;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgb(146, 46, 0);
+  }
+.search-btn{
+    margin-top: 20px;
+    margin-left: 40px;
+    width: 150%;
+    height: 50px;
+    font-weight: 700;
+    font-size: 17px;
+    background-color: orangered;
+    outline:0;
+    color:white;
+    border: none;
+    cursor: pointer;
+}
+.cancel-btn{
+    margin-left: 40px;
+    width: 80%;
+    height: 50px;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: rgb(255, 0, 0);
+    outline:0;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.searchLocationResult{
+    width: 100%;
+    margin-top: 10%;
+}
+.location{
+    background-color:rgb(255, 89, 28);
+    width: 80%;
+    margin-left: 10%;
+    height:110px;
+    border-radius: 10px;
+    box-shadow:0px 5px 5px rgb(145, 145, 145);
+}
+.location h2{
+    color:white  !important;
+    margin-left: 40px;
+    padding-top: 10px;
+}
+.ticketInfo{
+    display:flex;
+    flex-direction: column;
+    justify-content:space-between;
+    margin: 20px;
+}
+.ticketInfo img{
+    width:20%
+}
+.vehicle-card{
+    display:flex;
+    justify-content:space-between;
+    padding:15px;
+    margin:10px;
+    box-shadow: 4px 4px 10px rgb(150, 150, 150);
+    background-color:white;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 480px) {
+    .search-container{
+        flex-direction: column;
+        align-items:center;
+    }
+    .searchLocation {
+        margin-top: 2%;
+        width: 80%;
+        height: 320px;
+    }
+    .map{
+        width: 80%;
+        height: 200px;
+    }
+    .form__group {
+        position: relative;
+        padding: 0px 0px 0px;
+        margin-top: 30px;
+        width: 50%;
+      }
+    .form__field {
+        font-family: inherit;
+        width: 150%;
+        padding: 10px 5px;
+        margin-top: 0px;
+      }
+    .form__label {
+        margin-top: 10px;
+      }
+    .search-btn{
+        margin-top: 20px;
+        margin-left: 80px;
+        width: 100%;
+        height: 40px;
+    }
+    .location{
+        width: 90%;
+        margin-left: 5%;
+        height:60px;
+    }
+    .location h2{
+        color:white  !important;
+        margin-left: 10px;
+        padding-top: 5px;
+        font-size: 17px;
+    }
+    .ticketInfo{
+        margin: 5px;
+    }
+    .searchLocationResult{
+        margin-top: 1%;
+    }
+    .vehicle-card{
+        padding:5px;
+        margin:2px;
+        box-shadow: 4px 4px 10px rgb(150, 150, 150);
+        background-color:white;
+        border-radius: 10px;
+    }
+    .map{
+        box-shadow: 3px 3px 10px lightgrey;
+        width: 80%;
+        height: 600px;
+        margin-top: 5%;
+    }
+}

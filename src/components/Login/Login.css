@@ -1,0 +1,96 @@
+.login-section{
+    box-shadow: 3px 3px 10px lightgrey;
+    width: 35%;
+    height: 600px;
+    margin-top: 10%;
+    margin-left: 35%;
+    border: 1px solid black;
+}
+.login-section h1{
+    font-size:30px;
+    text-align: center;
+    margin:30px 0px;
+}
+.btn-newUser{
+    outline:0;
+    border:none;
+    background-color:white;
+    color:rgb(0, 65, 185); 
+    font-weight:700;
+    font-size: 17px;
+}
+.form_group{
+    width:100%
+}
+.form_field {
+    font-family: inherit;
+    width: 80%;
+    margin-left: 10%;
+    outline: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(48, 48, 48);
+    padding: 10px 10px;
+    margin-top: 5px;
+    margin-left: 50px;
+  }
+.form_label {
+    margin-left: 50px;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+  }
+.sign-in-btn{
+    margin-top: 10px;
+    margin-left: 10%;
+    width: 80%;
+    height: 50px;
+    font-weight: 700;
+    font-size: 18px;
+    background-color: orangered;
+    outline:0;
+    color:white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+.google-sign-in-btn{
+    margin-top: 10px;
+    margin-left: 10%;
+    width: 80%;
+    height: 50px;
+    font-weight: 700;
+    font-size: 18px;
+    background-color: rgb(255, 145, 0);
+    outline:0;
+    color:white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+@media screen and (max-width: 480px) {
+    .login-section{
+        box-shadow: 3px 3px 10px lightgrey;
+        width: 80%;
+        height: 500px;
+        margin-top: 5%;
+        margin-left: 10%;
+    }
+    .form_field {
+        font-family: inherit;
+        width: 60%;
+        margin-left: 10%;
+        outline: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: rgb(48, 48, 48);
+        padding: 10px 10px;
+        margin-left: 50px;
+      }
+      .login-section h1{
+        font-size:20px;
+        margin:20px 0px;
+    }
+}
