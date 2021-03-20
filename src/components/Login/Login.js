@@ -4,20 +4,17 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { UserContext } from '../../App'
 import { useHistory, useLocation } from 'react-router';
-import { Input, makeStyles } from '@material-ui/core';
 import firebaseConfig from '../../firebase.config';
 import './Login.css';
 
-const Login = () => {
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+} else {
+    firebase.app(); // if already initialized, use that one
+}
+// Initialize Firebase
 
-    const useStyles = makeStyles((theme) => ({
-        root: {
-            '& > *': {
-                margin: theme.spacing(1),
-            },
-        },
-    }));
-    const classes = useStyles();
+const Login = () => {
 
     const [newUser, setNewUser] = useState(false)
 
@@ -25,7 +22,7 @@ const Login = () => {
         isSignedIn: false,
         name: '',
         email: '',
-        password: '',
+        password: ''
     })
 
 
@@ -36,21 +33,14 @@ const Login = () => {
 
     const { from } = location.state || { from: { pathname: "/" } };
 
-    if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-    } else {
-        firebase.app(); // if already initialized, use that one
-    }
-    // Initialize Firebase
-
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
 
     const handleGoogleSignIn = () => {
-        const googleProvider = new firebase.auth.GoogleAuthProvider();
-
         firebase.auth()
             .signInWithPopup(googleProvider)
             .then((result) => {
                 const { displayName, email } = result.user;
+                console.log('i am from google', email);
                 const signedInUser = {
                     isSignedIn: true,
                     name: displayName,
@@ -59,31 +49,13 @@ const Login = () => {
                 setUser(signedInUser)
                 setLoggedInUser(signedInUser);
                 history.replace(from);
-                // ...
+
             }).catch((error) => {
                 const errorMessage = error.message;
                 console.log(errorMessage);
             });
     }
 
-
-    const handleSignOut = () => {
-        firebase.auth().signOut()
-            .then((res) => {
-                const signOutUser = {
-                    userSignedIn: false,
-                    name: '',
-                    email: '',
-                    error: '',
-                    success: false
-                }
-                setUser(signOutUser)
-                // Sign-out successful.
-            }).catch((error) => {
-                console.log(error)
-            })
-
-    }
 
     const handleSubmit = (event) => {
         if (newUser && user.email && user.password) {
@@ -94,6 +66,8 @@ const Login = () => {
                     newUserInfo.success = true;
                     setUser(newUserInfo);
                     updateUserName(user.name);
+                    setLoggedInUser(newUserInfo);
+                    history.replace(from);
                 })
                 .catch((error) => {
                     const newUserInfo = { ...user }
@@ -114,13 +88,13 @@ const Login = () => {
                     setUser(newUserInfo);
                     setLoggedInUser(newUserInfo);
                     history.replace(from);
-                    console.log('sign in user info', result)
                 })
                 .catch((error) => {
                     const newUserInfo = { ...user }
                     newUserInfo.error = error.message
                     newUserInfo.success = false
-                    setUser(newUserInfo)
+                    setUser(newUserInfo);
+
                 });
         }
         event.preventDefault()
@@ -167,7 +141,7 @@ const Login = () => {
                 <form onSubmit={handleSubmit} className='form_group'>
                     {newUser &&
                         <input className='form_field' type="text" onChange={handleChange} name="name" placeholder="Your Name" required />}
-                    
+
                     <label className="form_label">Email</label>
                     <input type="text" className='form_field' onChange={handleChange} placeholder="Your Email Address" name="email" required />
                     <br />
@@ -178,17 +152,15 @@ const Login = () => {
                     <br />
                     <input type="submit" className="sign-in-btn" value={newUser ? 'Sign Up' : 'Sign In'} />
                 </form>
-                <section style={{textAlign: 'center', marginTop:'20px'}}>
+                <section style={{ textAlign: 'center', marginTop: '20px' }}>
                     <span>Are you a new user? </span>
                     <button className='btn-newUser' onClick={() => setNewUser(!newUser)}  >
                         Sign Up....
                     </button>
                 </section>
+                <button className='google-sign-in-btn' onClick={handleGoogleSignIn}>Sign in with Google</button>
                 {
-                    user.isSignedIn ?
-                        <button style={{ backgroundColor: 'red', color: 'white' }} onClick={handleSignOut}>Sign out</button>
-                        :
-                        <button className='google-sign-in-btn' onClick={handleGoogleSignIn}>Sign in with Google</button>
+                    user.success ? <p style={{ color: 'green' }}>User {newUser ? 'Created' : 'Logged in'} Successfully</p> : <p style={{ color: 'red' }}>{user.error}</p>
                 }
             </section>
         </div>

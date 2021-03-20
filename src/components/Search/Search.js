@@ -14,7 +14,6 @@ const Search = (props) => {
     };
 
     const { id } = useParams();
-    console.log(id)
 
     const [location, setLocation] = useState({});
     const [isSearch, setIsSearch] = useState(false);
