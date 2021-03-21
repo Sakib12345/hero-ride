@@ -27,6 +27,7 @@ const Header = () => {
                     success: false
                 }
                 setUser(signOutUser)
+                setLoggedInUser(signOutUser)
                 // Sign-out successful.
             }).catch((error) => {
                 console.log(error)
